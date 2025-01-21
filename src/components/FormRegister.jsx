@@ -79,40 +79,40 @@ const FormRegister = () => {
 
     return (
         <main>
-            <h1 className="text-3xl font-semibold mb-5 transition-colors hover:text-blue-400">Cadastro de Membros</h1>
+            <h1 className="text-3xl font-semibold mb-5 transition-colors hover:text-slate-500">Cadastro de Membros</h1>
             <form onSubmit={handleSubmit} className="flex flex-col gap-2 items-center">
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-96 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
                     type="text"
                     name="name"
                     placeholder="Nome"
                     value={formData.name}
                     onChange={handleChange}
                 />
-                {errors.name && <span className="error text-red-500 text-xs w-96 text-start">{errors.name}</span>}
+                {errors.name && <span className="error text-red-500 text-xs w-80 text-start">{errors.name}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-96 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
                     type="email"
                     name="email"
                     placeholder="E-mail"
                     value={formData.email}
                     onChange={handleChange}
                 />
-                {errors.email && <span className="error text-red-500 text-xs w-96 text-start">{errors.email}</span>}
+                {errors.email && <span className="error text-red-500 text-xs w-80 text-start">{errors.email}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-96 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
                     type="text"
                     name="phone"
                     placeholder="Telefone"
                     value={formData.phone}
                     onChange={handleChange}
                 />
-                {errors.phone && <span className="error text-red-500 text-xs w-96 text-start">{errors.phone}</span>}
+                {errors.phone && <span className="error text-red-500 text-xs w-80 text-start">{errors.phone}</span>}
 
                 <select
-                    className="border p-2 rounded-lg w-96 focus:outline-blue-400"
+                    className="border p-2 rounded-lg w-80 focus:outline-blue-400"
                     name="position"
                     value={formData.position}
                     onChange={handleChange}
@@ -134,44 +134,44 @@ const FormRegister = () => {
                     <option value="Scrum Master">Scrum Master</option>
                     <option value="UI/UX Designer">UI/UX Designer</option>
                 </select>
-                {errors.position && <span className="error text-red-500 text-xs w-96 text-start">{errors.position}</span>}
+                {errors.position && <span className="error text-red-500 text-xs w-80 text-start">{errors.position}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-96 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
                     type="text"
                     name="github"
                     placeholder="URL do GitHub (opcional)"
                     value={formData.github}
                     onChange={handleChange}
                 />
-                {errors.github && <span className="error text-red-500 text-xs w-96 text-start">{errors.github}</span>}
+                {errors.github && <span className="error text-red-500 text-xs w-80 text-start">{errors.github}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-96 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
                     type="text"
                     name="linkedin"
                     placeholder="URL do LinkedIn (opcional)"
                     value={formData.linkedin}
                     onChange={handleChange}
                 />
-                {errors.linkedin && <span className="error text-red-500 text-xs w-96 text-start">{errors.linkedin}</span>}
+                {errors.linkedin && <span className="error text-red-500 text-xs w-80 text-start">{errors.linkedin}</span>}
 
-                <button type="submit" className="p-2 border border-blue-500 rounded-md font-medium w-96 hover:border-blue-600 hover:bg-slate-50 mb-4">Cadastrar</button>
+                <button type="submit" className="p-2 border border-blue-200 transition-colors rounded-md font-medium w-80 hover:border-blue-600">Cadastrar</button>
             </form>
             <div className="flex justify-center">
                 {alertMessage && <Message type={typeMessage} message={alertMessage} />}
             </div>
 
             <section>
-                <h2 className="text-2xl font-semibold my-10 transition-colors hover:text-blue-400">
+                <h2 className="text-2xl font-semibold my-10 transition-colors hover:text-slate-500">
                     Membros Cadastrados
                 </h2>
                 {savedData.length > 0 ? (
-                    <ul className="flex flex-col items-center gap-3 md:flex-row md:justify-center">
+                    <ul className="flex flex-col items-center gap-3 px-2 flex-wrap md:flex-row md:justify-center">
                         {savedData.map((user, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col items-start p-4 gap-2 border rounded-lg bg-blue-50 hover:bg-blue-100 shadow-sm mb-5 w-3/4 md:w-96 overflow-x-auto"
+                                className="flex flex-col items-start p-4 gap-2 border rounded-md shadow-md mb-5 w-80 transition-colors hover:bg-slate-50 lg:w-96 overflow-x-auto"
                             >
                                 <p className="flex">
                                     <span className="font-semibold flex-shrink-0 mr-2">Nome:</span>
