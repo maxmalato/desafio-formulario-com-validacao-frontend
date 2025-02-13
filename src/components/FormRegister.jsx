@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { registerSchema } from "../schemas/registerSchema.js";
-import { saveToLocalStorage, getFromLocalStorage } from "../utils/localStorageUtils";
+import { saveToSessionStorage, getFromSessionStorage } from "../utils/sessionStorageUtils.js";
 import Message from "./Message.jsx";
 
 const FormRegister = () => {
@@ -19,7 +19,7 @@ const FormRegister = () => {
     const [savedData, setSavedData] = useState([])
 
     useEffect(() => {
-        const storeData = getFromLocalStorage("usuarios") || []
+        const storeData = getFromSessionStorage("usuarios") || []
         setSavedData(storeData)
     }, [])
 
@@ -47,7 +47,7 @@ const FormRegister = () => {
 
         try {
             const validateData = registerSchema.parse(dataToValidate)
-            saveToLocalStorage("usuarios", [...savedData, validateData])
+            saveToSessionStorage("usuarios", [...savedData, validateData])
 
             setAlertMessage("Cadastro realizado com sucesso!")
             setTypeMessage("sucesso")
@@ -79,40 +79,40 @@ const FormRegister = () => {
 
     return (
         <main>
-            <h1 className="text-3xl font-semibold mb-5 transition-colors hover:text-slate-500">Cadastro de Membros</h1>
+            <h1 className="text-4xl font-semibold my-7">Cadastro de Membros</h1>
             <form onSubmit={handleSubmit} className="flex flex-col gap-2 items-center">
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400 bg-transparent placeholder:text-slate-600"
                     type="text"
                     name="name"
                     placeholder="Nome"
                     value={formData.name}
                     onChange={handleChange}
                 />
-                {errors.name && <span className="error text-red-500 text-xs w-80 text-start">{errors.name}</span>}
+                {errors.name && <span className="error text-red-500 text-xs w-80 text-start font-semibold">{errors.name}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400 bg-transparent  placeholder:text-slate-600"
                     type="email"
                     name="email"
                     placeholder="E-mail"
                     value={formData.email}
                     onChange={handleChange}
                 />
-                {errors.email && <span className="error text-red-500 text-xs w-80 text-start">{errors.email}</span>}
+                {errors.email && <span className="error text-red-500 text-xs w-80 text-start font-semibold">{errors.email}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400 bg-transparent  placeholder:text-slate-600"
                     type="text"
                     name="phone"
                     placeholder="Telefone"
                     value={formData.phone}
                     onChange={handleChange}
                 />
-                {errors.phone && <span className="error text-red-500 text-xs w-80 text-start">{errors.phone}</span>}
+                {errors.phone && <span className="error text-red-500 text-xs w-80 text-start font-semibold">{errors.phone}</span>}
 
                 <select
-                    className="border p-2 rounded-lg w-80 focus:outline-blue-400"
+                    className="border p-2 rounded-lg w-80 focus:outline-blue-400 bg-transparent"
                     name="position"
                     value={formData.position}
                     onChange={handleChange}
@@ -134,10 +134,10 @@ const FormRegister = () => {
                     <option value="Scrum Master">Scrum Master</option>
                     <option value="UI/UX Designer">UI/UX Designer</option>
                 </select>
-                {errors.position && <span className="error text-red-500 text-xs w-80 text-start">{errors.position}</span>}
+                {errors.position && <span className="error text-red-500 text-xs w-80 text-start font-semibold">{errors.position}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400 bg-transparent  placeholder:text-slate-600"
                     type="text"
                     name="github"
                     placeholder="URL do GitHub (opcional)"
@@ -147,7 +147,7 @@ const FormRegister = () => {
                 {errors.github && <span className="error text-red-500 text-xs w-80 text-start">{errors.github}</span>}
 
                 <input
-                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400"
+                    className="border p-2 rounded-lg placeholder:font-semibold w-80 focus:outline-blue-400 bg-transparent  placeholder:text-slate-600"
                     type="text"
                     name="linkedin"
                     placeholder="URL do LinkedIn (opcional)"
@@ -171,7 +171,7 @@ const FormRegister = () => {
                         {savedData.map((user, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col items-start p-4 gap-2 border rounded-md shadow-md mb-5 w-80 transition-colors hover:bg-slate-50 lg:w-96 overflow-x-auto"
+                                className="flex flex-col items-start p-4 gap-2 border-2 rounded-lg shadow-md mb-5 w-80 transition-colors hover:bg-slate-50 lg:w-96 overflow-x-auto"
                             >
                                 <p className="flex">
                                     <span className="font-semibold flex-shrink-0 mr-2">Nome:</span>
